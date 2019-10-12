@@ -1,0 +1,26 @@
+<!-- todo.erb -->
+<!-- views/todos.erb -->
+<header>
+  <div id='header-left'>
+    <h1><%= @todo[0] %></h1>
+    <!-- Display deadline if date has selcted -->
+    <% if @todo[1]!="" %>
+    <h4><span>Deadline:</span><%= @todo[1] %></h4>
+    <% end %>
+    <h2>Update Todo!</h2>
+  </div>
+</header>
+
+<section class='todo-container'>
+  <div>
+    <form action="/todos/<%= @id %>" method="POST" class="form">
+      <!-- because he cannot put a put method on our form -->
+      <input type='hidden' name='_method' value='put'>
+      <input type="text" name="title" value="<%= @todo[0] %>"/>
+      <div class='btn-container'>
+        <a   class='btn' href='/todos'>︎Back</a>
+        <input   class="btn-style" type='submit' value='save changes'>
+      </div>
+    </form>
+  </div>
+</section>
